@@ -3,25 +3,25 @@ import os
 import csv
 
 #Pull in CSV files and path it
-csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
-
-#Define Variables
+csvpath = os.path.join('..', 'python-challenge-isaac-gish', 'Resources', 'budget_data.csv')
 
 
-#Open CSV file and print
+#Open CSV file and read
 with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
 
-    print(csvfile)
+
 #Read headers when reading
     csvheader = next(csvreader)
-    print(f'Budget Header: [{csvheader}]')
 
-    for row in csvreader:
-        print(row)
+
+
+
+
+#Define Variables
 
 #Print Title
-print("Financial Analysis")
+print("                                  Financial Analysis")
 #Make it easier to read
 print("---------------------------------------------------------------------------------------------------")
 
