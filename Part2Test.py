@@ -61,9 +61,11 @@ print("------------------------------")
 print("")
 #Define Variables for the most votes and winner - set to empty
 Max_Votes = 0
-Winner = ""   
+Winner = ""
+#Set the same loop as before
 for person in Unique_Candidate:
     Candidate_Votes = Candidate.count(person)
+    #Set the empty variables to store the variable to find only the ones higher than it, and find the matching winner
     if Candidate_Votes > Max_Votes: 
         Max_Votes = Candidate_Votes
         Winner = person
