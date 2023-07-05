@@ -2,7 +2,11 @@
 import os
 import csv
 
-
+def export_to_text_file(filename, content):
+    output_path = os.path.join(os.getcwd(), filename)
+    with open(output_path, 'w') as file:
+        file.write(content)
+    print(f"Results have been exported to '{filename}'.")
 
 #Pull in CSV files and path it
 csvpath = os.path.join('..', 'python-challenge-isaac-gish', 'Resources', 'budget_data.csv')
@@ -71,6 +75,24 @@ print("")
 #5.
 print(f"Greatest Profit Decrease: {Min_Change_Month} {Min_Change}")
 print("")
+
+#Make the results into a text string
+financial_analysis_output = """
+                                  Financial Analysis
+---------------------------------------------------------------------------------------------------
+Total Months: {}
+
+Total: {}
+
+Average Change: {}
+
+Greatest Profit Increase: {} {}
+
+Greatest Profit Decrease: {} {}
+""".format(Total_Months, Total_Cash, Change_Average, Max_Change_Month, Max_Change, Min_Change_Month, Min_Change)
+
+#export this string that was just created
+export_to_text_file('part1.txt', financial_analysis_output)
 
 #Part 2 -------------------------------------------------------------------------------------------------------------------
 
@@ -142,3 +164,36 @@ for person in Unique_Candidate:
 print(f"The winner is {Winner}")
 print("")
 print("-------------------------------")
+
+
+#Make results into a string and export results to a Text File
+
+election_results_output = """
+Election Results
+-----------------------------
+Total Votes: {}
+
+-----------------------------
+{}
+-----------------------------
+The winner is {}
+
+-----------------------------
+""".format(Total_Votes, "\n".join("{}: Received {} total votes, ({:.2f}%)".format(person, Candidate.count(person), (Candidate.count(person) / Total_Votes) * 100) for person in Unique_Candidate), Winner)
+
+# Export the election results to a text file
+export_to_text_file('part2.txt', election_results_output)
+
+#Make each text file into 1
+merged_output = ""
+
+# Read Part 1
+with open('part1.txt', 'r') as file:
+    merged_output += file.read()
+
+# Read Part 2
+with open('part2.txt', 'r') as file:
+    merged_output += file.read()
+
+# Export the merged output to a new text file
+export_to_text_file('Main.txt', merged_output)
